@@ -1,10 +1,15 @@
 import React from "react";
 import "../styles/MobileFooter.css";
 
-const MobileFooter = () => {
+const MobileFooter = (props) => {
   return (
     <div className="mobile-footer">
-      <div className="mobile-footer-icon">
+      <div
+        className={`mobile-footer-icon ${
+          props.activeComponent === "My Rewards" ? "active" : ""
+        }`}
+        onClick={() => props.setActiveComponent("My Rewards")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24"
@@ -15,7 +20,12 @@ const MobileFooter = () => {
         </svg>
         <div className="mobile-footer-text">My Rewards</div>
       </div>
-      <div className="mobile-footer-icon">
+      <div
+        className={`mobile-footer-icon ${
+          props.activeComponent === "Collections" ? "active" : ""
+        }`}
+        onClick={() => props.setActiveComponent("Collections")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24"
@@ -26,7 +36,12 @@ const MobileFooter = () => {
         </svg>
         <div className="mobile-footer-text">Collection</div>
       </div>
-      <div className="mobile-footer-icon ">
+      <div
+        className={`mobile-footer-icon ${
+          props.activeComponent === "Scan" ? "active" : ""
+        }`}
+        onClick={() => props.setActiveComponent("Scan")}
+      >
         <div className="scan-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +54,12 @@ const MobileFooter = () => {
         </div>
         <div className="mobile-footer-text">Scan</div>
       </div>
-      <div className="mobile-footer-icon ">
+      <div
+        className={`mobile-footer-icon ${
+          props.activeComponent === "Rank" ? "active" : ""
+        }`}
+        onClick={() => props.setActiveComponent("Rank")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24"
@@ -50,7 +70,12 @@ const MobileFooter = () => {
         </svg>
         <div className="mobile-footer-text">Rank</div>
       </div>
-      <div className="mobile-footer-icon">
+      <div
+        className={`mobile-footer-icon ${
+          props.activeComponent === "Profile" ? "active" : ""
+        }`}
+        onClick={() => props.setActiveComponent("Profile")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24"

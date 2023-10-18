@@ -7,12 +7,18 @@ import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import { CHAIN_NAMESPACES, WALLET_ADAPTERS } from "@web3auth/base";
 import MobileFooter from "./components/MobileFooter";
 import MobileHeader from "./components/MobileHeader";
+import MyRewards from "./components/MyRewards";
+import Collections from "./components/Collections";
+import Rank from "./components/Rank";
+import Profile from "./components/Profile";
 
 // The signIn() method will return the user's Ethereum address
 // The await will last until the user is authenticated, so while the UI modal is showed
 
 function App() {
   const [safeInstance, setSafeInstance] = useState();
+
+  const [activeComponent, setActiveComponent] = useState("My Rewards");
   const authKitSignData = async () => {
     try {
       const userData = await safeInstance.signIn();
@@ -88,15 +94,26 @@ function App() {
 
   return (
     <div className="App">
-      <MobileHeader />
+      <MobileHeader component={activeComponent} />
       <div>
         <button onClick={authKitSignData}>Login</button>
       </div>
       <div>
         <button onClick={signOut}>Sign Out</button>
       </div>
-
-      <MobileFooter />
+      {activeComponent === "My Rewards" ? (
+        <MyRewards />
+      ) : activeComponent === "Collections" ? (
+        <Collections />
+      ) : activeComponent === "Rank" ? (
+        <Rank />
+      ) : activeComponent === "Profile" ? (
+        <Profile />
+      ) : null}
+      <MobileFooter
+        setActiveComponent={setActiveComponent}
+        activeComponent={activeComponent}
+      />
     </div>
   );
 }

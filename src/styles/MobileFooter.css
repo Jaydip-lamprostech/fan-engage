@@ -27,14 +27,21 @@
 .mobile-footer-icon svg {
   width: 30px; /* Adjust the size as needed */
   height: auto;
+  fill: #d3d3d3;
+  animation: all 5s ease;
 }
-
+.mobile-footer-icon.active svg {
+  fill: black;
+}
 .mobile-footer-text {
-  color: black;
+  color: #d3d3d3;
   font-size: 12px;
   margin-top: 5px;
+  animation: all 5s ease;
 }
-
+.mobile-footer-icon.active .mobile-footer-text {
+  color: black;
+}
 .scan-icon {
   background-color: #fca311;
   border-radius: 9999px;
@@ -46,6 +53,7 @@
   justify-content: center;
   align-items: center;
   margin-top: -32px;
+  margin-bottom: 10px;
   box-shadow: 0px 0px 20px 0px rgb(252, 163, 17, 1);
 }
 .scan-icon .mobile-footer-icon svg {

@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/MobileHeader.css";
 
-function MobileHeader() {
+function MobileHeader(props) {
   return (
     <div className="mobile-header">
       <div className="header-left">
-        <h1>My Rewards</h1>
+        <h1>{props.component}</h1>
       </div>
       <div className="header-right">
         <span>Help Icon</span>
