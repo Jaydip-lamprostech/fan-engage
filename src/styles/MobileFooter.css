@@ -1,0 +1,30 @@
+/* MobileFooter.css */
+
+.mobile-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.mobile-footer-icon {
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.mobile-footer-icon img {
+  width: 30px; /* Adjust the size as needed */
+  height: auto;
+}
+
+.mobile-footer-text {
+  color: #fff;
+  font-size: 12px;
+}

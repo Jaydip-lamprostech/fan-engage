@@ -5,6 +5,7 @@ import { Web3AuthModalPack, Web3AuthConfig } from "@safe-global/auth-kit";
 import { Web3AuthOptions } from "@web3auth/modal";
 import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import { CHAIN_NAMESPACES, WALLET_ADAPTERS } from "@web3auth/base";
+import MobileFooter from "./components/MobileFooter";
 
 // The signIn() method will return the user's Ethereum address
 // The await will last until the user is authenticated, so while the UI modal is showed
@@ -19,18 +20,21 @@ function App() {
       console.log(err);
     }
   };
-
+  const signOut = async () => {
+    await safeInstance.signOut();
+  };
   useEffect(() => {
     const initializeSafe = async () => {
       // https://web3auth.io/docs/sdk/pnp/web/modal/initialize#arguments
       const options = {
-        clientId: "YOUR_WEB3_AUTH_CLIENT_ID", // https://dashboard.web3auth.io/
+        clientId:
+          "BHL2WcKZEzJak3aH-af8pbC6Th5wmiWZc_8MrdVsks_JvES1ZZHXVBUd43ujlqcLky-xiRjCxJ7_uYFwrEjsVAM", // https://dashboard.web3auth.io/
         web3AuthNetwork: "testnet",
         chainConfig: {
           chainNamespace: CHAIN_NAMESPACES.EIP155,
-          chainId: "0x5",
+          chainId: "0x13881",
           // https://chainlist.org/
-          rpcTarget: "https://rpc.ankr.com/eth_goerli",
+          rpcTarget: `https://rpc.ankr.com/polygon_mumbai`,
         },
         uiConfig: {
           theme: "dark",
@@ -47,7 +51,7 @@ function App() {
         [WALLET_ADAPTERS.METAMASK]: {
           label: "metamask",
           showOnDesktop: true,
-          showOnMobile: false,
+          showOnMobile: true,
         },
       };
 
@@ -62,10 +66,11 @@ function App() {
             name: "Safe",
           },
         },
+        env: "staging",
       });
 
       const web3AuthConfig = {
-        txServiceUrl: "https://safe-transaction-goerli.safe.global",
+        txServiceUrl: "https://mumbaifaucet.com/",
       };
 
       // Instantiate and initialize the pack
@@ -82,21 +87,14 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <div>
         <button onClick={authKitSignData}>Login</button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
+      <div>
+        <button onClick={signOut}>Sign Out</button>
+      </div>
+
+      <MobileFooter />
     </div>
   );
 }
