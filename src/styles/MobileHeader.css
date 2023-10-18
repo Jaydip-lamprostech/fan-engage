@@ -1,0 +1,17 @@
+.mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fca311;
+  color: #fff;
+  padding: 20px 15px;
+  font-size: 12px;
+}
+
+.header-left h1 {
+  margin: 0;
+}
+
+.header-right {
+  cursor: pointer;
+}

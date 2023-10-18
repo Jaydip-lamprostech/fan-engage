@@ -6,6 +6,7 @@ import { Web3AuthOptions } from "@web3auth/modal";
 import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import { CHAIN_NAMESPACES, WALLET_ADAPTERS } from "@web3auth/base";
 import MobileFooter from "./components/MobileFooter";
+import MobileHeader from "./components/MobileHeader";
 
 // The signIn() method will return the user's Ethereum address
 // The await will last until the user is authenticated, so while the UI modal is showed
@@ -87,6 +88,7 @@ function App() {
 
   return (
     <div className="App">
+      <MobileHeader />
       <div>
         <button onClick={authKitSignData}>Login</button>
       </div>
