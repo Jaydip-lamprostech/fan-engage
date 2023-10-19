@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/MyRewards.css";
 import { QrScanner } from "@yudiel/react-qr-scanner";
+
 function MyRewards() {
+  const [first, setfirst] = useState(false);
+  const [msg, setmsg] = useState("");
   return (
     <div>
       <div className="no-rewards-container">
@@ -25,10 +28,14 @@ function MyRewards() {
           </span>
         </div>
       </div>
-      <QrScanner
-        onDecode={(result) => console.log(result)}
-        onError={(error) => console.log(error?.message)}
-      />
+      <button onClick={() => setfirst(!first)}>Scan Doc</button>
+      {first ? (
+        <QrScanner
+          onDecode={(result) => setmsg(result)}
+          onError={(error) => setmsg(error?.message)}
+        />
+      ) : null}
+      {msg ? <p>{msg}</p> : null}
     </div>
   );
 }
