@@ -10,6 +10,7 @@
     "@web3auth/base": "4.3.0",
     "@web3auth/modal": "4.3.1",
     "@web3auth/openlogin-adapter": "^4.3.0",
+    "@yudiel/react-qr-scanner": "^1.1.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",

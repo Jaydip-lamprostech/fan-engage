@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/MyRewards.css";
+import { QrScanner } from "@yudiel/react-qr-scanner";
 function MyRewards() {
   return (
     <div>
@@ -24,6 +25,10 @@ function MyRewards() {
           </span>
         </div>
       </div>
+      <QrScanner
+        onDecode={(result) => console.log(result)}
+        onError={(error) => console.log(error?.message)}
+      />
     </div>
   );
 }
