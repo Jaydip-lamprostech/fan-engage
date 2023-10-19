@@ -11,18 +11,21 @@ import MyRewards from "./components/MyRewards";
 import Collections from "./components/Collections";
 import Rank from "./components/Rank";
 import Profile from "./components/Profile";
+import { ethers } from "ethers";
+import { EthersAdapter, SafeFactory } from "@safe-global/protocol-kit";
 
 // The signIn() method will return the user's Ethereum address
 // The await will last until the user is authenticated, so while the UI modal is showed
 
 function App() {
   const [safeInstance, setSafeInstance] = useState();
-
+  const [userDetails, setUserDetails] = useState();
   const [activeComponent, setActiveComponent] = useState("My Rewards");
   const authKitSignData = async () => {
     try {
       const userData = await safeInstance.signIn();
       console.log(userData);
+      setUserDetails(userData);
     } catch (err) {
       console.log(err);
     }
@@ -92,15 +95,64 @@ function App() {
     initializeSafe();
   }, []);
 
+  // deploy safe
+  const deploySafe = async () => {
+    try {
+      const RPC_URL = "https://rpc.ankr.com/polygon_mumbai";
+      const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
+      // console.log(provider);
+      // const signer = userData.signer;
+      // const owner1Signer = new ethers.Wallet(
+      //   `${process.env.REACT_APP_IMP_K}`,
+      //   provider
+      // );
+      // console.log(owner1Signer);
+      console.log(userDetails.address);
+      console.groupEnd(safeInstance.signer);
+      const ethAdapter = new EthersAdapter({
+        ethers,
+        signerOrProvider: safeInstance.signer,
+      });
+      console.log(ethAdapter);
+
+      const safeFactory = await SafeFactory.create({ ethAdapter });
+      console.log(safeFactory);
+
+      const owners = [`${userDetails.address.eoa}`];
+      const threshold = 1;
+
+      const safeAccountConfig = {
+        owners,
+        threshold,
+        // ...
+      };
+
+      const safeSdk = await safeFactory.deploySafe({
+        safeAccountConfig,
+      });
+      console.log(safeSdk);
+      const newSafeAddress = await safeSdk.getAddress();
+      console.log("Your Safe has been deployed:");
+      console.log(`https://goerli.etherscan.io/address/${newSafeAddress}`);
+      console.log(`https://app.safe.global/gor:${newSafeAddress}`);
+      console.log(newSafeAddress);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="App">
       <MobileHeader component={activeComponent} />
-      {/* <div>
+      <div style={{ marginTop: "100px" }}>
         <button onClick={authKitSignData}>Login</button>
       </div>
       <div>
         <button onClick={signOut}>Sign Out</button>
-      </div> */}
+      </div>
+      <div>
+        <button onClick={deploySafe}>Deploy Safe</button>
+      </div>
       {activeComponent === "My Rewards" ? (
         <MyRewards />
       ) : activeComponent === "Collections" ? (

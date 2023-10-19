@@ -31,8 +31,14 @@ function MyRewards() {
       <button onClick={() => setfirst(!first)}>Scan Doc</button>
       {first ? (
         <QrScanner
-          onDecode={(result) => setmsg(result)}
-          onError={(error) => setmsg(error?.message)}
+          onDecode={(result) => {
+            setmsg(result);
+            setfirst(!first);
+          }}
+          onError={(error) => {
+            setmsg(error?.message);
+            setfirst(!first);
+          }}
         />
       ) : null}
       {msg ? <p>{msg}</p> : null}
