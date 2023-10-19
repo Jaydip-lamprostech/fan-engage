@@ -95,12 +95,12 @@ function App() {
   return (
     <div className="App">
       <MobileHeader component={activeComponent} />
-      <div>
+      {/* <div>
         <button onClick={authKitSignData}>Login</button>
       </div>
       <div>
         <button onClick={signOut}>Sign Out</button>
-      </div>
+      </div> */}
       {activeComponent === "My Rewards" ? (
         <MyRewards />
       ) : activeComponent === "Collections" ? (

@@ -1,0 +1,32 @@
+/* NoRewardsMessage.css */
+
+.no-rewards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 70%;
+  margin: auto;
+}
+
+.no-rewards-icon {
+  margin-top: 50px;
+}
+
+.icon {
+  width: 50px; /* Adjust the size as needed */
+  height: 50px; /* Adjust the size as needed */
+  fill: #878e99;
+}
+
+.no-rewards-info {
+  text-align: center;
+}
+.no-rewards-info-title {
+  font-weight: 600;
+  display: block;
+  margin: 20px 0;
+}
+.no-rewards-info-description {
+  font-weight: 400;
+  display: block;
+}

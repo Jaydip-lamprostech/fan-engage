@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: #13131d;
   padding: 10px 20px;
   position: fixed;
   bottom: 0;
@@ -12,7 +12,7 @@
   z-index: 999;
   color: black;
   padding-bottom: 25px;
-  border: 1px solid #d3d3d3;
+  border: 1px solid rgba(255, 255, 255, 0.0784313725);
   border-radius: 10px 10px 0px 0px;
 }
 
@@ -27,23 +27,23 @@
 .mobile-footer-icon svg {
   width: 30px; /* Adjust the size as needed */
   height: auto;
-  fill: #d3d3d3;
+  fill: #d1dae793;
   animation: all 5s ease;
 }
 .mobile-footer-icon.active svg {
-  fill: black;
+  fill: #00a3ff;
 }
 .mobile-footer-text {
-  color: #d3d3d3;
+  color: #d1dae793;
   font-size: 12px;
   margin-top: 5px;
   animation: all 5s ease;
 }
 .mobile-footer-icon.active .mobile-footer-text {
-  color: black;
+  color: white;
 }
 .scan-icon {
-  background-color: #fca311;
+  background-color: #00a3ff;
   border-radius: 9999px;
   background-size: 40px;
   width: 60px;
@@ -54,8 +54,8 @@
   align-items: center;
   margin-top: -32px;
   margin-bottom: 10px;
-  box-shadow: 0px 0px 20px 0px rgb(252, 163, 17, 1);
+  box-shadow: 0px 0px 20px 0px #00a3ff;
 }
-.scan-icon .mobile-footer-icon svg {
+.mobile-footer-icon .scan-icon svg {
   fill: white;
 }
