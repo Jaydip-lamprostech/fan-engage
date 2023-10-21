@@ -12,7 +12,10 @@ function ScanTicketBottomComponent(props) {
       <div className="scan-ticket-component">
         <h2>Scan Your Ticket</h2>
         <div className="content">
-          <div className="scan-ticket-item">
+          <div
+            className="scan-ticket-item"
+            onClick={() => props.setExtraComponent("scan-ticket")}
+          >
             <div className="scan-ticket-item-inside">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

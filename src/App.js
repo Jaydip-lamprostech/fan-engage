@@ -14,6 +14,7 @@ import Profile from "./components/Profile";
 import { ethers } from "ethers";
 import { EthersAdapter, SafeFactory } from "@safe-global/protocol-kit";
 import ScanTicketBottomComponent from "./components/ScanTicketBottomComponent";
+import ExtraParentComponent from "./components/ExtraParentComponent";
 
 // The signIn() method will return the user's Ethereum address
 // The await will last until the user is authenticated, so while the UI modal is showed
@@ -23,6 +24,7 @@ function App() {
   const [showScanTicketComponent, setShowScanTicketComponent] = useState(false);
   const [userDetails, setUserDetails] = useState();
   const [activeComponent, setActiveComponent] = useState("My Rewards");
+  const [extraComponent, setExtraComponent] = useState("");
   const authKitSignData = async () => {
     try {
       const userData = await safeInstance.signIn();
@@ -145,8 +147,9 @@ function App() {
 
   return (
     <div className="App">
-      <MobileHeader component={activeComponent} />
-      <div style={{ marginTop: "100px" }}>
+      <div className="home-page">
+        <MobileHeader component={activeComponent} />
+        {/* <div style={{ marginTop: "100px" }}>
         <button onClick={authKitSignData}>Login</button>
       </div>
       <div>
@@ -154,25 +157,33 @@ function App() {
       </div>
       <div>
         <button onClick={deploySafe}>Deploy Safe</button>
+      </div> */}
+        {activeComponent === "My Rewards" ? (
+          <MyRewards />
+        ) : activeComponent === "Collections" ? (
+          <Collections />
+        ) : activeComponent === "Rank" ? (
+          <Rank />
+        ) : activeComponent === "Profile" ? (
+          <Profile />
+        ) : null}
+        <ScanTicketBottomComponent
+          showScanTicketComponent={showScanTicketComponent}
+          setShowScanTicketComponent={setShowScanTicketComponent}
+          setExtraComponent={setExtraComponent}
+        />
+        <MobileFooter
+          setActiveComponent={setActiveComponent}
+          activeComponent={activeComponent}
+          setShowScanTicketComponent={setShowScanTicketComponent}
+        />
       </div>
-      {activeComponent === "My Rewards" ? (
-        <MyRewards />
-      ) : activeComponent === "Collections" ? (
-        <Collections />
-      ) : activeComponent === "Rank" ? (
-        <Rank />
-      ) : activeComponent === "Profile" ? (
-        <Profile />
-      ) : null}
-      <ScanTicketBottomComponent
-        showScanTicketComponent={showScanTicketComponent}
-        setShowScanTicketComponent={setShowScanTicketComponent}
-      />
-      <MobileFooter
-        setActiveComponent={setActiveComponent}
-        activeComponent={activeComponent}
-        setShowScanTicketComponent={setShowScanTicketComponent}
-      />
+      {extraComponent && (
+        <ExtraParentComponent
+          setExtraComponent={setExtraComponent}
+          extraComponent={extraComponent}
+        />
+      )}
     </div>
   );
 }
