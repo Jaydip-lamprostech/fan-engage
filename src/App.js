@@ -13,12 +13,14 @@ import Rank from "./components/Rank";
 import Profile from "./components/Profile";
 import { ethers } from "ethers";
 import { EthersAdapter, SafeFactory } from "@safe-global/protocol-kit";
+import ScanTicketBottomComponent from "./components/ScanTicketBottomComponent";
 
 // The signIn() method will return the user's Ethereum address
 // The await will last until the user is authenticated, so while the UI modal is showed
 
 function App() {
   const [safeInstance, setSafeInstance] = useState();
+  const [showScanTicketComponent, setShowScanTicketComponent] = useState(false);
   const [userDetails, setUserDetails] = useState();
   const [activeComponent, setActiveComponent] = useState("My Rewards");
   const authKitSignData = async () => {
@@ -162,9 +164,14 @@ function App() {
       ) : activeComponent === "Profile" ? (
         <Profile />
       ) : null}
+      <ScanTicketBottomComponent
+        showScanTicketComponent={showScanTicketComponent}
+        setShowScanTicketComponent={setShowScanTicketComponent}
+      />
       <MobileFooter
         setActiveComponent={setActiveComponent}
         activeComponent={activeComponent}
+        setShowScanTicketComponent={setShowScanTicketComponent}
       />
     </div>
   );

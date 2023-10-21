@@ -1,0 +1,73 @@
+.scan-ticket-component-parent {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  height: 90vh;
+  width: 100%;
+  z-index: 2000;
+  background-color: #ffffff0f;
+}
+.scan-ticket-component-parent.active {
+  display: block;
+}
+.scan-ticket-component {
+  position: fixed;
+  bottom: 0;
+  opacity: 0;
+  background-color: rgba(36, 36, 53, 1);
+  padding: 10px 20px;
+  width: calc(100% - 41px);
+  height: max-content;
+  z-index: 2006;
+  border: 1px solid rgba(255, 255, 255, 0.0784313725);
+  border-radius: 10px 10px 0px 0px;
+  transform: translateY(100%) scale(0.8);
+  transform-origin: bottom center;
+  transition: transform 0.5s, opacity 0.5s;
+  padding-bottom: 50px;
+}
+
+.scan-ticket-component h2 {
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 20px 0;
+}
+.scan-ticket-component-parent.active .scan-ticket-component {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.scan-ticket-component-parent button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+.scan-ticket-item {
+  width: calc(100% - 21px);
+  border: 1px solid #ffffff14;
+  background-color: #242435;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  margin-bottom: 20px;
+}
+.scan-ticket-item-inside {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.scan-ticket-item-inside svg {
+  fill: white;
+}
+.scan-ticket-item-inside span {
+  font-size: 14px;
+}
+
+.scan-ticket-item-two svg {
+  fill: white;
+}
