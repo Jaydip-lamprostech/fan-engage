@@ -1,0 +1,48 @@
+.add-event-main {
+  margin: 30px 0;
+  margin-top: 100px;
+}
+.add-event-main h1 {
+  color: white;
+}
+.input-parent {
+  display: block;
+  width: 70%;
+  max-width: 900px;
+  margin: 20px auto;
+}
+.input-parent label {
+  display: block;
+  text-align: left;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.input-parent input,
+.input-parent textarea {
+  resize: none;
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0;
+  background-color: rgba(36, 36, 53, 0.3411764706);
+  border: 1px solid #ffffff14;
+  border-radius: 6px;
+  font-size: 20px;
+  color: white;
+}
+.input-parent input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.passimage {
+  width: 100%;
+  display: flex;
+  gap: 5%;
+}
+.passimage div {
+  width: 50%;
+}
+
+.submit {
+  padding: 12px 20px;
+}

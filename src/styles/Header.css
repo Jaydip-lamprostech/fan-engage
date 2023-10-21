@@ -1,0 +1,24 @@
+.mobile-header {
+  position: fixed;
+  top: 0;
+  width: calc(100% - 30px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #13131d;
+  color: white;
+  padding: 20px 15px;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.0784313725);
+}
+
+.header-left h1 {
+  margin: 0;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+}
+
+.header-right {
+  cursor: pointer;
+}

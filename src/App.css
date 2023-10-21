@@ -27,7 +27,69 @@
 .App-link {
   color: #61dafb;
 }
+.main-container {
+  margin-top: 100px;
+}
 
+.main-container button {
+  text-transform: uppercase;
+  background-color: #212e48;
+  border-radius: 6px;
+  font-weight: 500;
+  box-shadow: 10px 10px 19px #16018a05, -10px -10px 19px #0b016412;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin-bottom: 50px;
+}
+
+button.sample-ticket {
+  margin: 20px 0;
+}
+.set-qr-main {
+  display: flex;
+  width: 80%;
+  max-width: 900px;
+  margin: 30px auto;
+  align-items: center;
+  justify-content: space-between;
+}
+.set-qr-main button {
+  padding: 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.set-qr-main svg {
+  fill: white;
+  width: 30px;
+  height: 30px;
+}
+button {
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  background-color: #212e48;
+  box-shadow: 10px 10px 19px #16018a05, -10px -10px 19px #0b016412;
+  color: white;
+  border-radius: 6px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border: none;
+}
+button:hover {
+  background-color: #00a3ff;
+  transform: translateY(-5px);
+}
+.login-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.login-btn svg {
+  fill: white;
+  margin-left: 5px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
