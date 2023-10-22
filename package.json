@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tableland/sdk": "^4.5.3-dev.0",
+    "dotenv": "^16.3.1",
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
