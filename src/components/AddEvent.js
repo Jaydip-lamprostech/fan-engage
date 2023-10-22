@@ -87,7 +87,6 @@ function AddEvent(props) {
     // Connect to the database
     const db = new Database({ signer });
 
-    const FanPrefix = "fantable_80001_8172";
     const ArtistPrefix = "artisttable_80001_8171";
 
     console.log("Inserting...");
@@ -108,89 +107,9 @@ function AddEvent(props) {
       .run();
 
     console.log("Inserted...");
-
-    //
-    // const RPC_URL =
-    //   "https://polygon-mumbai.g.alchemy.com/v2/q5nyl5T11-vTcF_ZRTvjvIoM1q1lEWqk";
-    // const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
-    // const signer = new ethers.Wallet(
-    //   process.env.REACT_APP_GELATO_RELAY_API_KEY,
-    //   provider
-    // );
-    // const safeAddress = "0x5aa1DE55561f3b4d4139A7E2079c6dd3CB3894c4"; // Safe from which the transaction will be sent. Replace with your Safe address
-    // const chainId = 80001;
-
-    // // Get Gelato Relay API Key: https://relay.gelato.network/
-    // const GELATO_RELAY_API_KEY = process.env.REACT_APP_PRIVATE_KEY;
-
-    // const options = {
-    //   gasLimit: 100000,
-    //   isSponsored: true,
-    // };
-
-    // const ethAdapter = new EthersAdapter({
-    //   ethers,
-    //   signerOrProvider: signer,
-    // });
-
-    // const safeSDK = await Safe.create({
-    //   ethAdapter,
-    //   safeAddress,
-    // });
-
-    // const relayKit = new GelatoRelayPack(GELATO_RELAY_API_KEY);
+    props.setShowTicketWithQR(true);
   };
 
-  // const createSafe = async () => {
-  //   console.log("inside");
-  //   const RPC_URL =
-  //     "https://polygon-mumbai.g.alchemy.com/v2/q5nyl5T11-vTcF_ZRTvjvIoM1q1lEWqk";
-  //   const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
-  //   const signer = new ethers.Wallet(
-  //     "0x3e4fb39c0becc66f4c79867213e2c395e6303841d10f9baa69ee3fba81e32b08",
-  //     provider
-  //   );
-  //   // const provider = new ethers.providers.Web3Provider(
-  //   //   props.modalPack.getProvider()
-  //   // );
-  //   // const signer = provider.getSigner();
-  //   // ethAdapter instance
-  //   const ethAdapter = new EthersAdapter({
-  //     ethers,
-  //     signerOrProvider: signer,
-  //   });
-  //   console.log(ethAdapter);
-
-  //   // deploy a new safe
-  //   const safeFactory = await SafeFactory.create({ ethAdapter });
-  //   console.log(safeFactory);
-  //   const owners = [props.address.eoa];
-  //   const threshold = 1;
-  //   const safeAccountConfig = {
-  //     owners: owners,
-  //     threshold: threshold,
-  //     saltNonce: 123,
-  //   };
-  //   console.log(owners);
-  //   const safeSdk = await safeFactory.deploySafe({ safeAccountConfig });
-  //   console.log(safeSdk);
-
-  //   // //
-  //   const newSafeAddress = await safeSdk.getAddress();
-  //   console.log(newSafeAddress);
-
-  //   // safe account : 0x5aa1DE55561f3b4d4139A7E2079c6dd3CB3894c4
-  // };
-
-  // useEffect(() => {
-  //   if (props.address) {
-  //     if (props.address.safes.length == 0) {
-  //       createSafe();
-  //     } else {
-  //       setSafeAddress(props.address.safes[0]);
-  //     }
-  //   }
-  // }, []);
   return (
     <div className="add-event-main">
       <h1>Add Your Event on This Platform</h1>

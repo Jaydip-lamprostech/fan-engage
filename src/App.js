@@ -17,6 +17,7 @@ function App() {
   const [qrSize, setQrSize] = useState(100);
   const [address, setAddress] = useState();
   const [modalPack, setModalPack] = useState();
+  const [showTicketWithQR, setShowTicketWithQR] = useState(false);
   const [formData, setFormData] = useState({
     eoa: "",
     event_name: "",
@@ -61,8 +62,8 @@ function App() {
   };
 
   useEffect(() => {
-    if (img2 && qrcodeimg) showCanvas();
-  }, [position, qrSize]);
+    if (img2 && qrcodeimg && showTicketWithQR) showCanvas();
+  }, [position, qrSize, showTicketWithQR]);
 
   const handleDownload = () => {
     const canvas = canvasRef.current;
@@ -85,6 +86,8 @@ function App() {
         modalPack={modalPack}
         formData={formData}
         setFormData={setFormData}
+        showTicketWithQR={showTicketWithQR}
+        setShowTicketWithQR={setShowTicketWithQR}
       />
       <div className="main-container">
         <button onClick={showCanvas} className="sample-ticket">
@@ -101,12 +104,16 @@ function App() {
             />
           </div>
         )}
-        <SetQRCode
-          position={position}
-          setPosition={setPosition}
-          setQrSize={setQrSize}
-        />
-        <button onClick={handleDownload}>download</button>
+        {showTicketWithQR ? (
+          <>
+            <SetQRCode
+              position={position}
+              setPosition={setPosition}
+              setQrSize={setQrSize}
+            />
+            <button onClick={handleDownload}>download</button>
+          </>
+        ) : null}
       </div>
     </div>
   );
