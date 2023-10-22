@@ -17,7 +17,7 @@ const disconnectedHandler = (data) => console.log("DISCONNECTED", data);
 function Header({ setAddress, setModalPack }) {
   const [web3AuthModalPack, setWeb3AuthModalPack] = useState();
   const [safeAuthSignInResponse, setSafeAuthSignInResponse] = useState(null);
-  const [userInfo, setUserInfo] = useState();
+  const [userInfo, setUserInfo] = useState("");
   const [provider, setProvider] = useState(null);
 
   const login = async () => {
@@ -27,10 +27,10 @@ function Header({ setAddress, setModalPack }) {
     console.log("SIGN IN RESPONSE: ", signInInfo);
     setAddress(signInInfo);
     const userInfo = await web3AuthModalPack.getUserInfo();
-    console.log("USER INFO: ", userInfo);
+    console.log("USER INFO: ", signInInfo);
 
     setSafeAuthSignInResponse(signInInfo);
-    setUserInfo(userInfo || undefined);
+    setUserInfo(signInInfo || undefined);
     setProvider(web3AuthModalPack.getProvider());
     setModalPack(web3AuthModalPack);
   };
@@ -39,7 +39,8 @@ function Header({ setAddress, setModalPack }) {
     if (!web3AuthModalPack) return;
 
     await web3AuthModalPack.signOut();
-
+    setUserInfo("");
+    setAddress("");
     setProvider(null);
     setSafeAuthSignInResponse(null);
   };
@@ -132,25 +133,47 @@ function Header({ setAddress, setModalPack }) {
         <h1>Admin Panel</h1>
       </div>
       <div className="header-right">
-        <button className="login-btn" onClick={() => login()}>
-          Login
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            enable-background="new 0 0 24 24"
-            height="24px"
-            viewBox="0 0 24 24"
-            width="24px"
-            fill="#000000"
-          >
-            <g>
-              <rect fill="none" height="24" width="24" />
-              <rect fill="none" height="24" width="24" />
-            </g>
-            <g>
-              <path d="M10.3,7.7L10.3,7.7c-0.39,0.39-0.39,1.01,0,1.4l1.9,1.9H3c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h9.2l-1.9,1.9 c-0.39,0.39-0.39,1.01,0,1.4l0,0c0.39,0.39,1.01,0.39,1.4,0l3.59-3.59c0.39-0.39,0.39-1.02,0-1.41L11.7,7.7 C11.31,7.31,10.69,7.31,10.3,7.7z M20,19h-7c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h7c1.1,0,2-0.9,2-2V5c0-1.1-0.9-2-2-2h-7 c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h7V19z" />
-            </g>
-          </svg>
-        </button>
+        {userInfo ? (
+          <button className="login-btn" onClick={() => logout()}>
+            Logout
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              enable-background="new 0 0 24 24"
+              height="24px"
+              viewBox="0 0 24 24"
+              width="24px"
+              fill="#000000"
+            >
+              <g>
+                <rect fill="none" height="24" width="24" />
+                <rect fill="none" height="24" width="24" />
+              </g>
+              <g>
+                <path d="M10.3,7.7L10.3,7.7c-0.39,0.39-0.39,1.01,0,1.4l1.9,1.9H3c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h9.2l-1.9,1.9 c-0.39,0.39-0.39,1.01,0,1.4l0,0c0.39,0.39,1.01,0.39,1.4,0l3.59-3.59c0.39-0.39,0.39-1.02,0-1.41L11.7,7.7 C11.31,7.31,10.69,7.31,10.3,7.7z M20,19h-7c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h7c1.1,0,2-0.9,2-2V5c0-1.1-0.9-2-2-2h-7 c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h7V19z" />
+              </g>
+            </svg>
+          </button>
+        ) : (
+          <button className="login-btn" onClick={() => login()}>
+            Login
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              enable-background="new 0 0 24 24"
+              height="24px"
+              viewBox="0 0 24 24"
+              width="24px"
+              fill="#000000"
+            >
+              <g>
+                <rect fill="none" height="24" width="24" />
+                <rect fill="none" height="24" width="24" />
+              </g>
+              <g>
+                <path d="M10.3,7.7L10.3,7.7c-0.39,0.39-0.39,1.01,0,1.4l1.9,1.9H3c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h9.2l-1.9,1.9 c-0.39,0.39-0.39,1.01,0,1.4l0,0c0.39,0.39,1.01,0.39,1.4,0l3.59-3.59c0.39-0.39,0.39-1.02,0-1.41L11.7,7.7 C11.31,7.31,10.69,7.31,10.3,7.7z M20,19h-7c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h7c1.1,0,2-0.9,2-2V5c0-1.1-0.9-2-2-2h-7 c-0.55,0-1,0.45-1,1v0c0,0.55,0.45,1,1,1h7V19z" />
+              </g>
+            </svg>
+          </button>
+        )}
       </div>
     </div>
   );

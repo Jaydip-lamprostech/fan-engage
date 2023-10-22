@@ -8,6 +8,7 @@ import qrcodeimg from "./assets/qrcode.png";
 import SetQRCode from "./components/SetQRCode";
 import Header from "./components/Header";
 import AddEvent from "./components/AddEvent";
+import { userInfo } from "os";
 
 function App() {
   const [ticketWithoutQR, setTicketWithoutQR] = useState("");
@@ -19,20 +20,21 @@ function App() {
   const [modalPack, setModalPack] = useState();
   const [showTicketWithQR, setShowTicketWithQR] = useState(false);
   const [formData, setFormData] = useState({
-    eoa: "",
+    eoa: address?.eoa,
     event_name: "",
     event_venue: "",
     pass_image: "",
     pass_count: 1,
     collection_name: "",
     nft_in_collection: "",
+    event_id: "",
   });
 
   const showCanvas = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    console.log(formData);
     // Clear any previous content on the canvas
     const jsonData = [
       {
@@ -40,6 +42,7 @@ function App() {
         event_venue: formData.event_venue,
         ticketImage: formData.pass_image,
         collection_name: formData.collection_name,
+        event_id: formData.event_id,
       },
     ];
     const jsonString = JSON.stringify(jsonData);
@@ -58,11 +61,10 @@ function App() {
         };
       });
     };
-    setfirst((prev) => prev + 1);
   };
 
   useEffect(() => {
-    if (img2 && qrcodeimg && showTicketWithQR) showCanvas();
+    if (showTicketWithQR) showCanvas();
   }, [position, qrSize, showTicketWithQR]);
 
   const handleDownload = () => {
@@ -79,6 +81,10 @@ function App() {
   return (
     <div className="App">
       <Header setAddress={setAddress} setModalPack={setModalPack} />
+      <div className="connected-address-parent">
+        <p>Connected Address :</p>
+        <h1 className="connected-address">{address?.eoa}</h1>
+      </div>
       <AddEvent
         setTicketWithoutQR={setTicketWithoutQR}
         ticketWithoutQR={ticketWithoutQR}
@@ -89,11 +95,11 @@ function App() {
         showTicketWithQR={showTicketWithQR}
         setShowTicketWithQR={setShowTicketWithQR}
       />
-      <div className="main-container">
-        <button onClick={showCanvas} className="sample-ticket">
-          Show Ticket with QR
-        </button>
-        {first && (
+      {showTicketWithQR ? (
+        <div className="main-container">
+          {/* <button onClick={showCanvas} className="sample-ticket">
+            Show Ticket with QR
+          </button> */}
           <div>
             <canvas
               ref={canvasRef}
@@ -103,18 +109,15 @@ function App() {
               style={{ border: "1px solid white", padding: "10px" }}
             />
           </div>
-        )}
-        {showTicketWithQR ? (
-          <>
-            <SetQRCode
-              position={position}
-              setPosition={setPosition}
-              setQrSize={setQrSize}
-            />
-            <button onClick={handleDownload}>download</button>
-          </>
-        ) : null}
-      </div>
+
+          <SetQRCode
+            position={position}
+            setPosition={setPosition}
+            setQrSize={setQrSize}
+          />
+          <button onClick={handleDownload}>download</button>
+        </div>
+      ) : null}
     </div>
   );
 }
