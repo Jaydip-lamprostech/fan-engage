@@ -5,7 +5,7 @@ import "../styles/ScanTicket.css";
 function ScanTicket() {
   const [msg, setmsg] = useState("");
   return (
-    <div className="scan-ticket-component">
+    <div className="scan-ticket-main-component">
       <QrScanner
         onDecode={(result) => {
           setmsg(result);
