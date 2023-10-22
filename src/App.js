@@ -25,11 +25,9 @@ function App() {
     const jsonData = [
       {
         eventName: "Music Festival",
-        timing: "6:00 PM - 10:00 PM",
-        date: "2023-10-28",
-        address: "123 Main Street, Cityville",
-        numTickets: 500,
-        collectionName: "music_festival_tickets",
+        event_venue: "address",
+        ticketImage: "2023-10-28",
+        collection_name: "artist collection",
       },
     ];
     const jsonString = JSON.stringify(jsonData);
