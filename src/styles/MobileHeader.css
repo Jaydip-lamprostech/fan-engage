@@ -15,12 +15,20 @@
 .header-left h1 {
   margin: 0;
   font-weight: 700;
+  font-size: 1.2rem;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
 }
 
 .header-right {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header-right a {
+  color: white;
+  text-decoration: none;
 }
 .login-btn {
   display: flex;

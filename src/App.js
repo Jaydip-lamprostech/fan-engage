@@ -30,7 +30,11 @@ function App() {
   return (
     <div className="App">
       <div className="home-page">
-        <MobileHeader component={activeComponent} setAddress={setAddress} />
+        <MobileHeader
+          component={activeComponent}
+          setAddress={setAddress}
+          address={address}
+        />
         {/* <div style={{ marginTop: "100px" }}>
         <button onClick={authKitSignData}>Login</button>
       </div>
