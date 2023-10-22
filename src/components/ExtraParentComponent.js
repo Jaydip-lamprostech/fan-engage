@@ -19,7 +19,9 @@ function ExtraParentComponent(props) {
           <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
         </svg>
       </div>
-      {props.extraComponent === "scan-ticket" ? <ScanTicket /> : null}
+      {props.extraComponent === "scan-ticket" ? (
+        <ScanTicket address={props.address} />
+      ) : null}
     </div>
   );
 }
