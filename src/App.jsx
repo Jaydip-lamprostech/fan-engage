@@ -14,8 +14,8 @@ function App() {
   // Connect to the database
   const db = new Database({ signer });
 
-  const FanPrefix = "Fantable_80001_8169";
-  const ArtistPrefix = "Artisttable_80001_8168";
+  const FanPrefix = "fantable_80001_8188";
+  const ArtistPrefix = "artisttable_80001_8171";
 
   const createArtistTable = async () => {
     console.log("Creating table...");
@@ -32,7 +32,7 @@ function App() {
     console.log("Creating table...");
     const { meta: create } = await db
       .prepare(
-        `CREATE TABLE ${FanPrefix} (id integer primary key, eoa text, event_name text, event_venue text, scanned_image text, rewards text, collection_name text);`
+        `CREATE TABLE ${FanPrefix} (id integer , eoa text, event_name text, event_venue text, scanned_image text, rewards text, collection_name text);`
       )
       .run();
 
@@ -45,9 +45,10 @@ function App() {
     // Insert a row into the table
     const { meta: insert } = await db
       .prepare(
-        `INSERT INTO ${FanPrefix} (eoa, event_name, event_venue, scanned_image, rewards, collection_name) VALUES (?, ?, ?, ?, ?, ?);`
+        `INSERT INTO ${FanPrefix} (id, eoa, event_name, event_venue, scanned_image, rewards, collection_name) VALUES (?, ?, ?, ?, ?, ?,?);`
       )
       .bind(
+        23,
         "0xB5204aff106dc1Ffc6bE909c94a6A933081dB636",
         "La_tomatina with indian test",
         "FUN BLAST, SBR road , Ahmedabad 380054,",
