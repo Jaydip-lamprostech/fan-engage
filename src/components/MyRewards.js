@@ -24,7 +24,7 @@ function MyRewards({ address }) {
       let data2 = [];
       for (let i = 0; i < results.length; i++) {
         console.log(results[i]);
-        if (results[i].eoa == address.eoa) {
+        if (results[i].eoa === "0xA515a66687d663dFFbbE8D5C0Ff757D858788C33") {
           if (!data2.find((item) => results[i].id === data2.id)) {
             data2.push(results[i]);
           }
