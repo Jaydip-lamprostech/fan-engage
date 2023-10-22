@@ -17,6 +17,15 @@ function App() {
   const [qrSize, setQrSize] = useState(100);
   const [address, setAddress] = useState();
   const [modalPack, setModalPack] = useState();
+  const [formData, setFormData] = useState({
+    eoa: "",
+    event_name: "",
+    event_venue: "",
+    pass_image: "",
+    pass_count: 1,
+    collection_name: "",
+    nft_in_collection: "",
+  });
 
   const showCanvas = () => {
     const canvas = canvasRef.current;
@@ -26,10 +35,10 @@ function App() {
     // Clear any previous content on the canvas
     const jsonData = [
       {
-        eventName: "Music Festival",
-        event_venue: "address",
-        ticketImage: "2023-10-28",
-        collection_name: "artist collection",
+        eventName: formData.event_name,
+        event_venue: formData.event_venue,
+        ticketImage: formData.pass_image,
+        collection_name: formData.collection_name,
       },
     ];
     const jsonString = JSON.stringify(jsonData);
@@ -74,6 +83,8 @@ function App() {
         ticketWithoutQR={ticketWithoutQR}
         address={address}
         modalPack={modalPack}
+        formData={formData}
+        setFormData={setFormData}
       />
       <div className="main-container">
         <button onClick={showCanvas} className="sample-ticket">

@@ -23,20 +23,10 @@ function AddEvent(props) {
   const [fileName, setFileName] = useState("");
   const [safeAddress, setSafeAddress] = useState();
 
-  const [formData, setFormData] = useState({
-    eoa: "",
-    event_name: "",
-    event_venue: "",
-    pass_image: "",
-    pass_count: 1,
-    collection_name: "",
-    nft_in_collection: "",
-  });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    props.setFormData({
+      ...props.formData,
       [name]: value,
     });
   };
@@ -75,7 +65,7 @@ function AddEvent(props) {
     image_cid = cid + "/" + fileName;
 
     console.log(image_cid);
-    setFormData({ ...formData, pass_image: image_cid });
+    props.setFormData({ ...props.formData, pass_image: image_cid });
 
     handleSubmit();
     // setFile(url);
@@ -83,11 +73,11 @@ function AddEvent(props) {
 
   // contract integration
   const handleSubmit = async () => {
-    console.log(formData.pass_image);
+    console.log(props.formData.pass_image);
     // Use formData to submit or process the form data
-    const url = "https://ipfs.io/ipfs/" + formData.pass_image;
+    const url = "https://ipfs.io/ipfs/" + props.formData.pass_image;
     console.log(url);
-    console.log(formData);
+    console.log(props.formData);
     const privateKey = process.env.REACT_APP_PRIVATE_KEY;
     const wallet = new Wallet(privateKey);
     const provider = getDefaultProvider(
@@ -109,11 +99,11 @@ function AddEvent(props) {
       )
       .bind(
         props.address.eoa,
-        formData.event_name,
-        formData.event_venue,
+        props.formData.event_name,
+        props.formData.event_venue,
         url,
-        formData.pass_count,
-        formData.collection_name
+        props.formData.pass_count,
+        props.formData.collection_name
       )
       .run();
 
@@ -210,7 +200,7 @@ function AddEvent(props) {
           type="text"
           name="event_name"
           required
-          value={formData.event_name}
+          value={props.formData.event_name}
           onChange={handleChange}
         />
       </div>
@@ -221,7 +211,7 @@ function AddEvent(props) {
           required
           rows={10}
           name="event_venue"
-          value={formData.event_venue}
+          value={props.formData.event_venue}
           onChange={handleChange}
         />
       </div>
@@ -232,7 +222,7 @@ function AddEvent(props) {
           required
           name="pass_count"
           disabled
-          value={formData.pass_count}
+          value={props.formData.pass_count}
           onChange={handleChange}
         />
       </div>
@@ -243,7 +233,7 @@ function AddEvent(props) {
           type="text"
           required
           name="collection_name"
-          value={formData.collection_name}
+          value={props.formData.collection_name}
           onChange={handleChange}
         />
       </div>
