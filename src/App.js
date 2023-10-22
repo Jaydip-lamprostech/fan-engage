@@ -15,6 +15,8 @@ function App() {
   const [first, setfirst] = useState(1);
   const [position, setPosition] = useState({ x: 800, y: 50 });
   const [qrSize, setQrSize] = useState(100);
+  const [address, setAddress] = useState();
+  const [modalPack, setModalPack] = useState();
 
   const showCanvas = () => {
     const canvas = canvasRef.current;
@@ -68,10 +70,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header setAddress={setAddress} setModalPack={setModalPack} />
       <AddEvent
         setTicketWithoutQR={setTicketWithoutQR}
         ticketWithoutQR={ticketWithoutQR}
+        address={address}
+        modalPack={modalPack}
       />
       <div className="main-container">
         <button onClick={showCanvas} className="sample-ticket">
