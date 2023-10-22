@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/MyRewards.css";
-
+import dummyReward from "../assets/dummy_reward02.jpg";
 function MyRewards() {
   return (
     <div>
@@ -21,8 +21,55 @@ function MyRewards() {
             Get tickets and get started!
           </span>
           <span className="no-rewards-info-description">
-            Start by scanning your ticket.
+            Start by scanning your ticket and mint the nft.
           </span>
+        </div>
+      </div>
+      {/* rewards container  */}
+      <div className="rewards-container">
+        <div className="rewards-grid-main">
+          {/* nft item map */}
+          <div className="rewards-grid-item">
+            <div className="rewards-image">
+              <img src={dummyReward} alt="reward nft" />
+            </div>
+            <div className="rewards-nft-details">
+              <span className="nft-title">nft title</span>
+              <span className="nft-collection">artist name</span>
+            </div>
+          </div>
+          <div className="rewards-grid-item">
+            <div className="rewards-image">
+              <img src={dummyReward} alt="reward nft" />
+            </div>
+            <div className="rewards-nft-details">
+              <span className="nft-title">nft title</span>
+              <span className="nft-collection">artist name</span>
+            </div>
+          </div>
+          <div className="rewards-grid-item">
+            <div className="rewards-image">
+              <img src={dummyReward} alt="reward nft" />
+            </div>
+            <div className="rewards-nft-details">
+              <span className="nft-title">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit,
+                distinctio!
+              </span>
+              <span className="nft-collection">
+                Lorem ipsum dolor sit amet.
+              </span>
+            </div>
+          </div>
+          <div className="rewards-grid-item">
+            <div className="rewards-image">
+              <img src={dummyReward} alt="reward nft" />
+            </div>
+            <div className="rewards-nft-details">
+              <span className="nft-title">nft title</span>
+              <span className="nft-collection">artist name</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
