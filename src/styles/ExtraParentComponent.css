@@ -1,8 +1,8 @@
 .extra-main {
-  position: fixed;
+  position: absolute;
   top: 0;
-  height: 100%;
-  width: calc(100% - 41px);
+  min-height: 100%;
+  width: calc(100% - 42px);
   padding: 20px;
   border: 1px solid red;
   background-color: #282c34;

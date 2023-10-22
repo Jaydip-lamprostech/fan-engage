@@ -22,3 +22,29 @@
 .header-right {
   cursor: pointer;
 }
+.login-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+}
+.login-btn svg {
+  width: 15px;
+  fill: white;
+}
+.login-btn {
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  background-color: #212e48;
+  box-shadow: 10px 10px 19px #16018a05, -10px -10px 19px #0b016412;
+  color: white;
+  border-radius: 6px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border: none;
+}
+.login-btn:hover {
+  background-color: #00a3ff;
+  transform: translateY(-5px);
+}

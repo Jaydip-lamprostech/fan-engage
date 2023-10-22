@@ -1,3 +1,44 @@
 .scan-ticket-main-component {
-  margin-top: 100px;
+  margin-top: 80px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.ticket-details-item {
+  margin: 10px 0;
+}
+.item-title {
+  display: block;
+  font-size: 14px;
+  text-align: left;
+}
+.item-value {
+  max-width: 100%;
+  text-align: left;
+  display: block;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 10px 0;
+  object-fit: cover;
+}
+.item-value img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+.mint-nft {
+  margin: 20px 0;
+  text-align: center;
+}
+.mint-nft button {
+  text-transform: uppercase;
+  background-color: #212e48;
+  border-radius: 6px;
+  font-weight: 500;
+  box-shadow: 10px 10px 19px #16018a05, -10px -10px 19px #0b016412;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin-bottom: 50px;
 }
