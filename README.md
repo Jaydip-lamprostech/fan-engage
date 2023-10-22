@@ -36,7 +36,7 @@ FanVibe was developed using an agile methodology, allowing for iterative and inc
 
 ## PWA Installation Guide
 
-- [How to install PWA in Android and Iphone?]([https://fan-engage.vercel.app/](https://support.google.com/chrome/answer/9658361?hl=en&co=GENIE.Platform%3DAndroid)) 
+- [How to install PWA in Android and Iphone]([https://fan-engage.vercel.app/](https://support.google.com/chrome/answer/9658361?hl=en&co=GENIE.Platform%3DAndroid)) 
 
 ## Contributing
 
