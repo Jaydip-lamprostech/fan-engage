@@ -34,6 +34,10 @@ FanVibe was developed using an agile methodology, allowing for iterative and inc
 2. Install dependencies: `npm install`
 3. Start the development server: `npm run start`
 
+## PWA Installation Guide
+
+- [How to install PWA](https://support.google.com/chrome/answer/9658361?hl=en&co=GENIE.Platform%3DAndroid) 
+
 ## Contributing
 
 We welcome contributions! Please follow our [contribution guidelines](CONTRIBUTING.md) for details.
