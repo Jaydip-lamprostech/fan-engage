@@ -1,7 +1,7 @@
 import React from "react";
 
 function Profile() {
-  return <div>Profile</div>;
+  return <div>coming soon</div>;
 }
 
 export default Profile;

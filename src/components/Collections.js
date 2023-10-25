@@ -27,7 +27,7 @@ function Collections({ address }) {
       let collection2 = [];
       for (let i = 0; i < results.length; i++) {
         console.log(results[i]);
-        if (results[i].eoa === "0xA515a66687d663dFFbbE8D5C0Ff757D858788C33") {
+        if (results[i].eoa === address.eoa) {
           if (!data2.find((item) => results[i].id === item.id)) {
             data2.push(results[i]);
           }
@@ -65,8 +65,8 @@ function Collections({ address }) {
     let collectionData2 = [];
     for (let i = 0; i < results.length; i++) {
       console.log(results[i]);
-      if (results[i].eoa === "0xA515a66687d663dFFbbE8D5C0Ff757D858788C33") {
-        if (results[i].collection_name == e.target.value) {
+      if (results[i].eoa === address.eoa) {
+        if (results[i].collection_name === e.target.value) {
           if (!collectionData2.find((item) => results[i].id === item.id)) {
             collectionData2.push(results[i]);
           }
